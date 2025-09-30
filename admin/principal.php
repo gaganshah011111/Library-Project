@@ -1,0 +1,1 @@
+<?php $prince = array("Dr. Principal Name","1234567890","Principal Address");?>

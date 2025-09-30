@@ -1,0 +1,23 @@
+RewriteEngine On
+
+# Redirect admin/ to ?page=admin for consistency
+RewriteRule ^admin/?$ index.php?page=admin [L,QSA]
+
+# Hidden signup route (only accessible via direct URL)
+RewriteRule ^sp/?$ index.php?page=sp [L,QSA]
+
+# Redirect adminLib/ to ?page=admin for consistency  
+RewriteRule ^adminLib/?$ index.php?page=admin [L,QSA]
+
+# Allow direct access to adminLib subdirectories
+RewriteRule ^adminLib/(.+)$ adminLib/$1 [L]
+
+# Redirect other common routes
+RewriteRule ^student/?$ index.php?page=student [L,QSA]
+RewriteRule ^StuWebPortal/?$ index.php?page=student [L,QSA]
+RewriteRule ^library/?$ index.php?page=library [L,QSA]
+RewriteRule ^developers/?$ index.php?page=developers [L,QSA]
+
+# If no specific page is requested, show landing page
+RewriteCond %{QUERY_STRING} !page=
+RewriteRule ^$ index.php [L]
